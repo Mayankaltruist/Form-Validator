@@ -1,9 +1,11 @@
+// Select form element and input fields
 const form = document.getElementById("form");
 const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
+// Function to display error messages for input fields
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.className = "form-control error";
@@ -11,11 +13,13 @@ function showError(input, message) {
   small.innerText = message;
 }
 
+// Function to display success state for input fields
 function showSucces(input) {
   const formControl = input.parentElement;
   formControl.className = "form-control success";
 }
 
+// Function to check the validity of an email address
 function checkEmail(input) {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -26,6 +30,7 @@ function checkEmail(input) {
   }
 }
 
+// Function to check if input fields are not empty
 function checkRequired(inputArr) {
   inputArr.forEach(function (input) {
     if (input.value.trim() === "") {
@@ -36,6 +41,7 @@ function checkRequired(inputArr) {
   });
 }
 
+// Function to check the length of input fields
 function checkLength(input, min, max) {
   if (input.value.length < min) {
     showError(
@@ -52,6 +58,7 @@ function checkLength(input, min, max) {
   }
 }
 
+// Function to check if passwords match
 function checkPasswordsMatch(input1, input2) {
   if (input1.value !== input2.value) {
     showError(input2, "Passwords do not match");
